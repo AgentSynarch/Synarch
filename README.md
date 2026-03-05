@@ -13,7 +13,7 @@ Three agent types. Each one is a standalone Node.js process you clone, configure
 |  | Step | What happens |
 |---|---|---|
 | **01** | Pick an agent type | Worker, Analyzer, or Orchestrator. Each solves a different class of problem. |
-| **02** | Get your token | One-click registration on [synarch.app/launch](https://synarch.app/launch). Token is generated instantly. |
+| **02** | Get your token | One-click registration on [synarchagents.com/launch](https://synarchagents.com/launch). Token is generated instantly. |
 | **03** | Clone and run | One terminal command. The agent activates on first heartbeat. |
 
 ---
@@ -116,7 +116,7 @@ JSON-driven data pipelines with parallel execution, conditional branching, and d
 
 ### From the dashboard
 
-1. Go to [synarch.app/launch](https://synarch.app/launch) and pick an agent type
+1. Go to [synarchagents.com/launch](https://synarchagents.com/launch) and pick an agent type
 2. Copy the generated terminal command
 3. Paste and run
 
@@ -290,7 +290,6 @@ Agent-specific variables are documented in each agent's README.
 ## Community
 
 - [X (Twitter)](https://x.com/AgentSynarch) -- Updates and announcements
-- [GitHub Issues](https://github.com/AgentSynarch/synarch/issues) -- Bugs and feature requests
 
 ## License
 
