@@ -1,0 +1,54 @@
+{
+  "name": "multi-source-pipeline",
+  "description": "Fetches data from multiple sources in parallel, transforms, and outputs",
+  "steps": [
+    {
+      "id": "fetch-all",
+      "type": "parallel",
+      "merge": "object",
+      "branches": [
+        {
+          "name": "api-data",
+          "steps": [
+            { "id": "fetch-api", "type": "http-source", "config": { "url": "https://httpbin.org/json" } },
+            { "id": "extract-api", "type": "transform", "config": { "script": "(data) => data.slideshow" } }
+          ]
+        },
+        {
+          "name": "uuid",
+          "steps": [
+            { "id": "fetch-uuid", "type": "http-source", "config": { "url": "https://httpbin.org/uuid" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "merge-results",
+      "type": "transform",
+      "config": {
+        "script": "(data) => ({ ...data['api-data'], uuid: data.uuid?.uuid, merged_at: new Date().toISOString() })"
+      }
+    },
+    {
+      "id": "check-result",
+      "type": "branch",
+      "cases": [
+        {
+          "name": "has-slides",
+          "condition": "data && data.slides && data.slides.length > 0",
+          "steps": [
+            { "id": "count-slides", "type": "transform", "config": { "script": "(data) => ({ ...data, slide_count: data.slides.length })" } }
+          ]
+        }
+      ],
+      "default": [
+        { "id": "no-slides", "type": "log", "config": {} }
+      ]
+    },
+    {
+      "id": "final-output",
+      "type": "log",
+      "config": {}
+    }
+  ]
+}

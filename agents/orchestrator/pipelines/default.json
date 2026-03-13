@@ -1,0 +1,26 @@
+{
+  "name": "example-pipeline",
+  "description": "Fetches data from an API, transforms it, and logs the output",
+  "steps": [
+    {
+      "id": "fetch-data",
+      "type": "http-source",
+      "config": {
+        "url": "https://httpbin.org/json",
+        "method": "GET"
+      }
+    },
+    {
+      "id": "transform",
+      "type": "transform",
+      "config": {
+        "script": "data => ({ processed: true, timestamp: new Date().toISOString(), payload: data })"
+      }
+    },
+    {
+      "id": "output",
+      "type": "log",
+      "config": {}
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "synarch-orchestrator",
+  "version": "2.1.0",
+  "description": "SYNARCH Orchestrator Agent -- JSON-driven data pipelines with parallel execution, conditional branching, rate limiting, and persistent dead-letter queues.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node src/self-test.js",
+    "validate": "node src/validate-pipeline.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
